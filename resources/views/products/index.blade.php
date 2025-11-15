@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="display:grid; place-content:center;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
 <body style="max-width:1200px">
-  <div style="display: flex; justify-content: space-between; align-items: center; height: fit-content; margin-bottom: 20px; ">
+  <div style="display: flex; justify-content: space-between; align-items: center; height: fit-content; margin-bottom: 20px; width:100%; ">
     <h1>Products</h1>
     <div>
       @if (session()->has("success"))
