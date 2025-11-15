@@ -19,14 +19,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            "name" => "required",
-            "qty" => "required|numeric",
-            "price" => 'required|numeric|between:0.001,999.99',
-            "description" => "required",
+            "name"  => "required",
+            "qty"   => "required|numeric",
+            "price"     => 'required|numeric|between:0.001,999.99',
+            "description"   => "required",
 
         ]);
         $newProduct = Product::create($data);
-        return redirect(route("product.index"));
+
+        return redirect(route("product.index"))->with("success", "Added successfully ✅");
     }
     public function edit(Product $product)
     {
@@ -39,9 +40,13 @@ class ProductController extends Controller
             "qty" => "required|numeric",
             "price" => 'required|numeric|between:0.001,999.99',
             "description" => "required",
-            
+
         ]);
         $product->update($data);
-        return redirect(route("product.index"));
+        return redirect(route("product.index"))->with("success", "Updated successfully ✅");
+    }
+    public function destroy(Product $product){
+        $product->delete();
+        return redirect(route("product.index"))->with("success", "Deleted successfully ✅");
     }
 }
