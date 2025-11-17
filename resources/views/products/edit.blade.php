@@ -11,6 +11,10 @@
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
   <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
     <h1 class="text-2xl font-semibold mb-6 text-center">Edit a Product</h1>
+    <a href="/products"
+      class="inline-block mb-4 text-red-600 font-medium hover:underline">
+      ← Back to Products
+    </a>
     <form action="{{route('product.update',['product'=> $product])}}" method="post" class="space-y-5">
       @csrf
       @method('put')

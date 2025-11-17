@@ -11,6 +11,7 @@ Route::get('/test', function(){
 Route::group([
     "prefix" => "products",
     "as" => "product.",
+    // "middleware" => ["j", "k"],
 ], function () {
     Route::get('/', [ProductController::class, "index"])->name("index");
     Route::get('/create', [ProductController::class, "create"])->name("create");

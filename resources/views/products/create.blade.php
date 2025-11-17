@@ -11,6 +11,11 @@
   <div class="w-full max-w-lg bg-white p-8 rounded shadow-md border border-red-500">
     <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Create a Product</h1>
 
+    <a href="/products"
+       class="inline-block mb-4 text-red-600 font-medium hover:underline">
+      ← Back to Products
+    </a>
+
     <form action="{{ route('product.store') }}" method="post" class="space-y-4">
       @csrf
       @method('post')
