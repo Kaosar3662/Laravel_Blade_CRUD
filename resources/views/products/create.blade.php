@@ -16,11 +16,11 @@
       ← Back to Products
     </a>
 
-    <form action="{{ route('product.store') }}" method="post" class="space-y-4">
+    <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data" class="space-y-4">
       @csrf
       @method('post')
 
-      <div>
+      <div> 
         <label for="name" class="block text-gray-700 mb-1">Name</label>
         <input type="text" name="name" id="name" placeholder="Product Name" required
                class="w-full px-4 py-2 border border-red-500 rounded focus:outline-none focus:ring-2 focus:ring-red-500"/>
@@ -41,6 +41,11 @@
       <div>
         <label for="description" class="block text-gray-700 mb-1">Description</label>
         <input type="text" name="description" id="description" placeholder="Description" required
+               class="w-full px-4 py-2 border border-red-500 rounded focus:outline-none focus:ring-2 focus:ring-red-500"/>
+      </div>
+      <div>
+        <label for="image" class="block text-gray-700 mb-1">Image</label>
+        <input type="file" name="image" id="image" accept="image/*" required
                class="w-full px-4 py-2 border border-red-500 rounded focus:outline-none focus:ring-2 focus:ring-red-500"/>
       </div>
 

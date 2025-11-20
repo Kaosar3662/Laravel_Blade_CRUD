@@ -15,7 +15,7 @@
       class="inline-block mb-4 text-red-600 font-medium hover:underline">
       ← Back to Products
     </a>
-    <form action="{{route('product.update',['product'=> $product])}}" method="post" class="space-y-5">
+    <form action="{{route('product.update',['product'=> $product])}}" method="post" enctype="multipart/form-data" class="space-y-5">
       @csrf
       @method('put')
       <div>
@@ -37,6 +37,15 @@
         <label for="description" class="block mb-1 font-medium text-gray-700">Description</label>
         <input type="text" name="description" id="description" placeholder="Description" value="{{$product->description}}" required
           class="w-full px-4 py-2 border border-red-500 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-700 transition" />
+      </div>
+      @if($product->image)
+      <div class="mb-4">
+        <img src="{{ asset('storage/' . $product->image) }}" alt="Current Image" class="w-full h-auto rounded-md">
+      </div>
+      @endif
+      <div>
+        <label for="image" class="block mb-1 font-medium text-gray-700">Image</label>
+        <input type="file" name="image" id="image" class="w-full" />
       </div>
       <button type="submit"
         class="w-full bg-red-500 text-white font-semibold py-2 rounded-md hover:bg-red-600 transition">Update Product</button>

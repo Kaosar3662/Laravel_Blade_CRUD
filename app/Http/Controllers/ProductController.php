@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -23,8 +24,13 @@ class ProductController extends Controller
             "qty"   => "required|numeric",
             "price"     => 'required|numeric|between:0.001,999.99',
             "description"   => "required",
+            "image"   => "nullable|image|mimes:png,jpg,gif|max:4096",
 
         ]);
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('uploads', 'public');
+            $data['image'] = $imagePath;
+        }
         $newProduct = Product::create($data);
 
         return redirect(route("product.index"))->with("success", "Added successfully ✅");
@@ -42,6 +48,13 @@ class ProductController extends Controller
             "description" => "required",
 
         ]);
+        if ($request->hasFile('image')) {
+            if ($product->image && file_exists(storage_path('app/public/' . $product->image))) {
+                unlink(storage_path('app/public/' . $product->image));
+            }
+            $imagePath = $request->file('image')->store('uploads', 'public');
+            $data['image'] = $imagePath;
+        }
         $product->update($data);
         return redirect(route("product.index"))->with("success", "Updated successfully ✅");
     }

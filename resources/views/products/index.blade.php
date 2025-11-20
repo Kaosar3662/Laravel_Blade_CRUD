@@ -32,7 +32,7 @@
         <tr>
           <th class="px-4 py-2 border border-red-500">ID</th>
           <th class="px-4 py-2 border border-red-500">Name</th>
-          <th class="px-4 py-2 border border-red-500">Qty</th>
+          <th class="px-4 py-2 border border-red-500">image</th>
           <th class="px-4 py-2 border border-red-500">Price</th>
           <th class="px-4 py-2 border border-red-500">Description</th>
           <th class="px-4 py-2 border border-red-500">Edit</th>
@@ -44,7 +44,8 @@
           <tr class="hover:bg-red-50">
             <td class="px-4 py-2 border border-red-500">{{ $product->id }}</td>
             <td class="px-4 py-2 border border-red-500">{{ $product->name }}</td>
-            <td class="px-4 py-2 border border-red-500">{{ $product->qty }}</td>
+            <td class="px-4 py-2 border border-red-500">
+            <img src="{{ $product->image ? asset($product->image) : 'default.jpg' }}" /></td>
             <td class="px-4 py-2 border border-red-500">{{ $product->price }}</td>
             <td class="px-4 py-2 border border-red-500">{{ $product->description }}</td>
             <td class="px-4 py-2 border border-red-500">
@@ -64,6 +65,5 @@
       </tbody>
     </table>
   </div>
-
 </body>
 </html>
